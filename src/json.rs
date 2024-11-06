@@ -397,7 +397,7 @@ impl JsonBuilder {
   fn process_cdata(&self, event: &BytesCData, stack: &mut Vec<Node>, reader: &mut Reader<&[u8]>) -> Result<(), Error> {
     self.process_text(&event.clone().escape(), stack, reader)?;
 
-    if let Some(mut last_node) = stack.last_mut() {
+    if let Some(last_node) = stack.last_mut() {
       last_node.text.literal = true;
     }
     Ok(())
